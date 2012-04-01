@@ -1,17 +1,4 @@
 var WS = (function(win, doc) {
-    win.fbAsyncInit = function() {
-        FB.init({
-            appId: '168589393194273',
-            channelUrl: '//atms.sakura.ne.jp/amidawars/index.php',
-            status: true,
-            cookie: true,
-            xfbml: true
-        });
-        $S.slideDown(cS);
-        if (Q) {
-            sInit();
-        }
-    };
     (function(d) {
         var j,
             i = 'facebook-jssdk';
@@ -22,6 +9,20 @@ var WS = (function(win, doc) {
         j.src = '//connect.facebook.net/en_US/all.js';
         d.getElementsByTagName('head')[0].appendChild(j);
     }(doc));
+
+    win.fbAsyncInit = function() {
+        FB.init({
+            appId: '168589393194273',
+            channelUrl: '//atms.sakura.ne.jp/amidawars/index.php',
+            status: true,
+            cookie: true,
+            xfbml: true
+        });
+        $('#s').slideDown(cS);
+        if (Q) {
+            sInit();
+        }
+    };
 
     var ret = {
             like: function(i, t, m) {
@@ -84,26 +85,23 @@ var WS = (function(win, doc) {
                 sLS('star', J.stringify(s));
             }
         },
-        $W = $('#w'),
-        $C = $('#o'),
-        $S = $('#s'),
-        $Q = $('#q'),
-        $B = $('#b'),
+        $W = $('#w')[0],
+        $C = $('#o')[0],
+        $Q = $('#q')[0],
+        $B = $('#b')[0],
         $CF = $('#d'),
-        $R = $('#r'),
-        $RM = $('#rm'),
-        $RF = $('#rf'),
-        $RA = $('#ra'),
-        $RS = $('#rs'),
-        $P = $('#p'),
-        $PN = $('#pn'),
-        $PH = $('#ph'),
-        $PW = $('#pw'),
-        $PM = $('#pm'),
-        $AO = $('#ao'),
-        $LO = $('#lo'),
-        $OS = $('#os'),
-        $NS = $('#ns'),
+        $RM = $('#rm')[0],
+        $RF = $('#rf')[0],
+        $RA = $('#ra')[0],
+        $RS = $('#rs')[0],
+        $PN = $('#pn')[0],
+        $PH = $('#ph')[0],
+        $PW = $('#pw')[0],
+        $PM = $('#pm')[0],
+        $AO = $('#ao')[0],
+        $LO = $('#lo')[0],
+        $OS = $('#os')[0],
+        $NS = $('#ns')[0],
         $ET,
         peL = 'もっと見る',
         shT = 'シェア',
@@ -219,55 +217,55 @@ var WS = (function(win, doc) {
             r = R;
         }
         if (q) {
-            $Q[0].value = q;
+            $Q.value = q;
         }
 
         if (r && r !== 'me') {
-            $RM[0].checked = false;
+            $RM.checked = false;
 
             switch (r) {
                 case 'friends':
-                    $RF[0].checked = true;
+                    $RF.checked = true;
                     break;
                 case 'all':
-                    $RA[0].checked = true;
+                    $RA.checked = true;
                     break;
                 default:
-                    $RS[0].checked = true;
+                    $RS.checked = true;
                     break;
             }
         }
         if (p && p !== '') {
-            $PN[0].selected = false;
+            $PN.selected = false;
 
             switch (p) {
                 case 'h':
-                    $PH[0].selected = true;
+                    $PH.selected = true;
                     break;
                 case 'w':
-                    $PW[0].selected = true;
+                    $PW.selected = true;
                     break;
                 default:
-                    $PM[0].selected = true;
+                    $PM.selected = true;
                     break;
             }
         }
         if (gLS('atonly') == 1) {
-            $AO[0].checked = true;
+            $AO.checked = true;
         }
         if (gLS('lionly') == 1) {
-            $LO[0].checked = true;
+            $LO.checked = true;
         }
         if (gLS('strict') == 1) {
-            $OS[0].checked = true;
+            $OS.checked = true;
         }
         if (gLS('nonstop') == 1) {
-            $NS[0].checked = true;
+            $NS.checked = true;
         }
     }
     else {
         JF = false;
-        $RS[0].disabled = true;
+        $RS.disabled = true;
         pT[10] = '</div></div></div></li>';
     }
 
@@ -275,7 +273,7 @@ var WS = (function(win, doc) {
         sInit();
         return false;
     };
-    $R.buttonset().find('input').click(function() {
+    $('#r').buttonset().find('input').click(function() {
         sInit();
     });
     $('#v')[0].onclick = function() {
@@ -289,23 +287,49 @@ var WS = (function(win, doc) {
     });
 
 function sInit() {
-    var w = $Q.val(),
-        ao = $('#ao:checked').val(),
-        lo = $('#lo:checked').val(),
-        os = $('#os:checked').val(),
-        ns = $('#ns:checked').val(),
-        r = $R.find('input[name=r]:checked').val(),
-        p = $P.find('option:selected').val();
+    var w = $Q.value,
+        ao = gChecked($AO),
+        lo = gChecked($LO),
+        os = gChecked($OS),
+        ns = gChecked($NS),
+        r,
+        p;
+
+    if ($RM.checked === true) {
+        r = $RM.value;
+    }
+    else if ($RF.checked === true) {
+        r = $RF.value;
+    }
+    else if ($RA.checked === true) {
+        r = $RA.value;
+    }
+    else {
+        r = $RS.value;
+    }
+
+    if ($PN.selected === true) {
+        p = $PN.value;
+    }
+    else if ($PH.selected === true) {
+        p = $PH.value;
+    }
+    else if ($PW.selected === true) {
+        p = $PW.value;
+    }
+    else {
+        p = $PM.value;
+    }
 
     tR = {};
     now = new Date().getTime();
     hC = tC = 0;
 
-    $C[0].innerHTML = '0/0';
-    $W[0].innerHTML = loT;
-    $ET = $('#e');
-    $ET[0].style.display = 'block';
-    $B[0].className = 'n';
+    $C.innerHTML = '0/0';
+    $W.innerHTML = loT;
+    $ET = $('#e')[0];
+    $ET.style.display = 'block';
+    $B.className = 'n';
 
     if (LS) {
         sLS('query', w);
@@ -564,14 +588,14 @@ function _s(res, conf) {
         if (html) {
             hC += h;
             groupID = conf.range + hC;
-            $ET.before('<div id="' +
-                    groupID +
-                    '" style="display:none">' +
-                    html +
-                    '</div>');
+            var insdom = doc.createElement('div');
+            insdom.id = groupID;
+            insdom.style.display = 'none';
+            insdom.innerHTML = html;
+            $W.insertBefore(insdom,$W.lastChild);
             $('#' + groupID).slideDown(cS);
         }
-        $C[0].innerHTML = hC + '/' + tC;
+        $C.innerHTML = hC + '/' + tC;
         conf.sc = hC;
         return i;
     }
@@ -707,29 +731,27 @@ function sPost(c, ct) {
     }
 }
 function sEnd(c) {
-    $ET[0].style.display = 'block';
-    $ET[0].className = '';
-    $ET[0].innerHTML = sMT;
+    $ET.style.display = 'block';
+    $ET.className = '';
+    $ET.innerHTML = sMT;
 
-    $B[0].className = '';
+    $B.className = '';
 
     if (c && c.last_time) {
-        $ET[0].onclick = function() {
+        $ET.onclick = function() {
             var ct = c.last_time;
 
             delete c.last_time;
             sPost(c, ct);
 
-            delete $ET[0].onclick;
-            $ET[0].className = 'n';
-            $ET[0].innerHTML = anT;
+            delete $ET.onclick;
+            $ET.className = 'n';
+            $ET.innerHTML = anT;
         }
     }
     else {
-        $ET
-        .find('li')
-        .html(sET)
-        .addClass('e');
+        $ET.innerHTML = sET;
+        $ET.className = 'e';
     }
 }
 function gLS(k) {
@@ -752,6 +774,13 @@ function hEsc(h) {
     };
     return h ? h.replace(/<|>/g, c) : '';
 }
+function gChecked(el) {
+    if (el.checked === true) {
+        return el.value;
+    }
+    return '';
+}
+
 
 return ret;
 
