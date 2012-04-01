@@ -19,8 +19,10 @@ var WS = (function(win, doc) {
         });
         var s = gd('s');
         s.className = 'o';
+        s = s.style
         setTimeout(function() {
-            s.style.overflow = 'visible';
+            s.overflow = 'visible';
+            s.height = 'auto';
         }, 300);
         if (Q) {
             sInit();
