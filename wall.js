@@ -1,9 +1,8 @@
 var WS = (function(win, doc) {
     (function(d) {
-        var j,
+        var j = d.createElement('script'),
             i = 'facebook-jssdk';
 
-        j = d.createElement('script');
         j.id = i;
         j.async = true;
         j.src = '//connect.facebook.net/en_US/all.js';
@@ -18,7 +17,11 @@ var WS = (function(win, doc) {
             cookie: true,
             xfbml: true
         });
-        $('#s').slideDown(cS);
+        var s = gd('s');
+        s.className = 'o';
+        setTimeout(function() {
+            s.style.overflow = 'visible';
+        }, 300);
         if (Q) {
             sInit();
         }
@@ -50,21 +53,23 @@ var WS = (function(win, doc) {
                         t.innerHTML = lTT[m];
 
                         if (sR.me[i]) {
-                            sR.me[i].likes.user_likes = !sR.me[i].likes.user_likes;
+                            sR.me[i].likes.user_likes =
+                                !sR.me[i].likes.user_likes;
                         }
                         if (sR.friends[i]) {
                             sR.friends[i].likes.user_likes =
                             !sR.friends[i].likes.user_likes;
                         }
                         if (sR.all[i]) {
-                            sR.all[i].likes.user_likes = !sR.all[i].likes.user_likes;
+                            sR.all[i].likes.user_likes =
+                                !sR.all[i].likes.user_likes;
                         }
                     }
                     else {
                         alert(liFT);
                     }
 
-                    t.disabled =  false;
+                    t.disabled = false;
                 });
                 return false;
             },
@@ -85,23 +90,23 @@ var WS = (function(win, doc) {
                 sLS('star', J.stringify(s));
             }
         },
-        $W = $('#w')[0],
-        $C = $('#o')[0],
-        $Q = $('#q')[0],
-        $B = $('#b')[0],
+        $W = gd('w'),
+        $C = gd('o'),
+        $Q = gd('q'),
+        $B = gd('b'),
         $CF = $('#d'),
-        $RM = $('#rm')[0],
-        $RF = $('#rf')[0],
-        $RA = $('#ra')[0],
-        $RS = $('#rs')[0],
-        $PN = $('#pn')[0],
-        $PH = $('#ph')[0],
-        $PW = $('#pw')[0],
-        $PM = $('#pm')[0],
-        $AO = $('#ao')[0],
-        $LO = $('#lo')[0],
-        $OS = $('#os')[0],
-        $NS = $('#ns')[0],
+        $RM = gd('rm'),
+        $RF = gd('rf'),
+        $RA = gd('ra'),
+        $RS = gd('rs'),
+        $PN = gd('pn'),
+        $PH = gd('ph'),
+        $PW = gd('pw'),
+        $PM = gd('pm'),
+        $AO = gd('ao'),
+        $LO = gd('lo'),
+        $OS = gd('os'),
+        $NS = gd('ns'),
         $ET,
         peL = 'もっと見る',
         shT = 'シェア',
@@ -195,7 +200,7 @@ var WS = (function(win, doc) {
         lTT = {
             'delete': lT,
             'post': uLT
-        }
+        };
     }
 
     for (fqli in fql) {
@@ -276,7 +281,7 @@ var WS = (function(win, doc) {
     $('#r').buttonset().find('input').click(function() {
         sInit();
     });
-    $('#v')[0].onclick = function() {
+    gd('v').onclick = function() {
         $CF.slideToggle(cS);
     };
 
@@ -327,7 +332,7 @@ function sInit() {
 
     $C.innerHTML = '0/0';
     $W.innerHTML = loT;
-    $ET = $('#e')[0];
+    $ET = gd('e');
     $ET.style.display = 'block';
     $B.className = 'n';
 
@@ -592,7 +597,7 @@ function _s(res, conf) {
             insdom.id = groupID;
             insdom.style.display = 'none';
             insdom.innerHTML = html;
-            $W.insertBefore(insdom,$W.lastChild);
+            $W.insertBefore(insdom, $W.lastChild);
             $('#' + groupID).slideDown(cS);
         }
         $C.innerHTML = hC + '/' + tC;
@@ -780,7 +785,9 @@ function gChecked(el) {
     }
     return '';
 }
-
+function gd(id) {
+    return doc.getElementById(id);
+}
 
 return ret;
 
