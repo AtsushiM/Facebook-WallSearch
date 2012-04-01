@@ -1,0 +1,30 @@
+"" Vim FastProject Config File
+"" AUTHOR:   Atsushi Mizoue <asionfb@gmail.com>
+"" WEBSITE:  https://github.com/AtsushiM/FastProject.vim
+"" VERSION:  0.9
+"" LICENSE:  MIT
+
+"" auto cd: project root
+" let g:FastProject_AutoCDRoot = 1
+
+"" set directory
+" let g:FastProject_DefaultIMGDir = ['img']
+" let g:FastProject_DefaultJSDir = ['js']
+" let g:FastProject_DefaultSASSDir = ['scss']
+" let g:FastProject_DefaultCSSDir = ['css']
+
+"" auto compile
+" let g:FastProject_AutoSassCompile = 1
+" let g:FastProject_AutoMake = ['js']
+
+"" override project open action
+" function! g:_FPOpen(...)
+"     80vs
+"     e js/main.js
+"     winc l
+"     sp
+"     e index.html
+"     winc j
+"     e scss/screen.scss
+"     winc h
+" endfunction

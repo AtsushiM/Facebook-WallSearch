@@ -1,0 +1,22 @@
+@charset "utf-8";
+header{margin-top:0}
+#query input{width:150px}
+#opts{position:relative;top:0;left:0;width:100%;margin: 5px 0;font-size:14px}
+#optopen{padding:15px;}
+#opts select,#opts input,#opts label{padding:5px}
+#inputs{padding-bottom:10px}
+#ranges{display: block;padding-top:10px}
+#wall{height:auto;margin-bottom:50px;overflow-x:none;overflow-y:auto}
+#wall time{display: block}
+footer{
+  position:fixed;
+  left:0;
+  bottom:0;
+  width:100%;
+  background:#FFF;
+  font-size:16px;
+}
+footer a {
+  display:block;
+  padding:10px;
+}
