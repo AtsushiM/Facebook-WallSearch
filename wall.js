@@ -24,16 +24,29 @@ var WS = (function(win, doc) {
     }(doc));
 
     var ret = {
-            like: function(i, m, t) {
+            like: function(i, t, m) {
                 t.disabled = true;
+
+                if (sR.me[i]) {
+                    m = sR.me[i].likes.user_likes;
+                }
+                else if (sR.friends[i]) {
+                    m = sR.friends[i].likes.user_likes;
+                }
+                else if (sR.all[i]) {
+                    m = sR.all[i].likes.user_likes;
+                }
+
+                if (m === true) {
+                    m = 'delete';
+                }
+                else {
+                    m = 'post';
+                }
+
                 FB.api('/' + i + '/likes', m, function(r) {
                     if (r && !r.error) {
                         t.innerHTML = lTT[m];
-                        $(t).attr('onclick', "WS.like('" +
-                            i +
-                            "','" +
-                            lTM[m] +
-                            "',this)");
 
                         if (sR.me[i]) {
                             sR.me[i].likes.user_likes = !sR.me[i].likes.user_likes;
@@ -128,7 +141,7 @@ var WS = (function(win, doc) {
         ],
         lBT = [
             '· <a href="javascript:void(0);" onclick="WS.like(\'',
-            '\',\'',
+            /* '\',\'', */
             '\',this);">',
             '</a>'
         ],
@@ -180,6 +193,11 @@ var WS = (function(win, doc) {
         lT = 'Like';
         uLT = 'unlike';
         liFT = 'Like Failed. Please try again at intervals.';
+
+        lTT = {
+            'delete': lT,
+            'post': uLT
+        }
     }
 
     for (fqli in fql) {
@@ -205,63 +223,50 @@ var WS = (function(win, doc) {
         }
 
         if (r && r !== 'me') {
-            /* $RM.prop('checked', false); */
             $RM[0].checked = false;
 
             switch (r) {
                 case 'friends':
-                    /* $RF.prop('checked', true); */
                     $RF[0].checked = true;
                     break;
                 case 'all':
-                    /* $RA.prop('checked', true); */
                     $RA[0].checked = true;
                     break;
                 default:
-                    /* $RS.prop('checked', true); */
                     $RS[0].checked = true;
                     break;
             }
         }
         if (p && p !== '') {
-            /* $PN.prop('selected', false); */
             $PN[0].selected = false;
 
             switch (p) {
                 case 'h':
-                    /* $PH.prop('selected', true); */
                     $PH[0].selected = true;
                     break;
                 case 'w':
-                    /* $PW.prop('selected', true); */
                     $PW[0].selected = true;
                     break;
                 default:
-                    /* $PM.prop('selected', true); */
                     $PM[0].selected = true;
                     break;
             }
         }
         if (gLS('atonly') == 1) {
-            /* $AO.prop('checked', true); */
             $AO[0].checked = true;
         }
         if (gLS('lionly') == 1) {
-            /* $LO.prop('checked', true); */
             $LO[0].checked = true;
         }
         if (gLS('strict') == 1) {
-            /* $OS.prop('checked', true); */
             $OS[0].checked = true;
         }
         if (gLS('nonstop') == 1) {
-            /* $NS.prop('checked', true); */
             $NS[0].checked = true;
         }
     }
     else {
         JF = false;
-        /* $RS.prop('disabled', false); */
         $RS[0].disabled = true;
         pT[10] = '</div></div></div></li>';
     }
@@ -499,12 +504,14 @@ function _s(res, conf) {
                 if (conf.range !== 'star') {
                     lihtml = lBT[0] + resi.post_id + lBT[1];
                     if (!resi.likes.user_likes) {
-                        lihtml += 'post' + lBT[2] + lT;
+                        /* lihtml += 'post' + lBT[2] + lT; */
+                        lihtml += lT;
                     }
                     else {
-                        lihtml += 'delete' + lBT[2] + uLT;
+                        /* lihtml += 'delete' + lBT[2] + uLT */;
+                        lihtml += uLT;
                     }
-                    lihtml += lBT[3];
+                    lihtml += lBT[2];
                 }
                 d = new Date(resi.created_time * 1000);
                 html += pT[0] +
@@ -564,7 +571,6 @@ function _s(res, conf) {
                     '</div>');
             $('#' + groupID).slideDown(cS);
         }
-        /* $C.html(hC + '/' + tC); */
         $C[0].innerHTML = hC + '/' + tC;
         conf.sc = hC;
         return i;
@@ -659,6 +665,9 @@ function sPost(c, ct) {
                         i,
                         len;
 
+                    for (i = 0, len = r.length; i < len; i++) {
+                        sR[c.range][r[i].post_id] = r[i];
+                    }
                     for (i = 0, len = ru.length; i < len; i++) {
                         u[ru[i].uid] = ru[i];
                     }
@@ -698,16 +707,13 @@ function sPost(c, ct) {
     }
 }
 function sEnd(c) {
-    /* $ET.show().removeClass('n').html(sMT); */
     $ET[0].style.display = 'block';
     $ET[0].className = '';
     $ET[0].innerHTML = sMT;
 
-    /* $B.removeClass('n'); */
     $B[0].className = '';
 
     if (c && c.last_time) {
-        /* $ET.click(function() { */
         $ET[0].onclick = function() {
             var ct = c.last_time;
 
@@ -717,11 +723,7 @@ function sEnd(c) {
             delete $ET[0].onclick;
             $ET[0].className = 'n';
             $ET[0].innerHTML = anT;
-            // $ET
-            // .unbind('click')
-            // .addClass('n')
-            // .html(anT);
-        /* }); */
+        }
     }
     else {
         $ET
