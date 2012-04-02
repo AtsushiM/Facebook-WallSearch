@@ -88,20 +88,8 @@ h1 {
     margin-left:9px;
     border-left:1px solid #CCC;
 }
-#s {
-    height:0;
-    -webkit-transition:height .1s ease-out;
-    -moz-transition:height .1s ease-out;
-    -ms-transition:height .1s ease-out;
-    -o-transition:height .1s ease-out;
-    transition:height .1s ease-out;
-}
-#s.o {
-    height:61px;
-    padding:15px 15px 0;
-}
 #i {
-    margin:0 0 3px;
+    margin:15px 0 3px;
 }
 #q {
     z-index:4;
@@ -137,12 +125,11 @@ h1 {
     z-index:3;
 }
 #d {
-    padding:20px 15px 1px;
     z-index:1;
     opacity:0.8;
 }
 fieldset {
-    margin:0 0 15px;
+    margin:20px 0 15px;
 }
 #g h2,legend {
     top:-0.5em;
@@ -301,6 +288,12 @@ footer {
     margin-top:1px;
     padding:9px;
 }
+#d,#s{
+    padding:0 15px;
+}
+.wc,#d,#s{
+    height:0;
+}
 .p,#l,.l,#g,#g h2,legend,#w .a,.s {
     position:absolute;
 }
@@ -319,7 +312,7 @@ fieldset,article,#t,#s,#q,#d,#g input,#w,#e {
 article,aside,footer,header,nav,section,.t:hover .p,#b.n .a,.a li,.a span {
     display:block;
 }
-.p,#b .a,#d,#e {
+.p,#b .a,#e {
     display:none;
 }
 .a li,.a span,.l li,#t p,.l ul,#i p,#y,#r li,#w .i,.h,#k {
@@ -356,9 +349,9 @@ article,#t,#e {
     border-top:1px solid #AAA;
 }
 .p,#g,fieldset {
-    border-radius:3px;
     -web-border-radius:3px;
     -moz-border-radius:3px;
+    border-radius:3px;
 }
 body,legend,article,#q,#d,#g h2,#e.n {
     background:#FFF;
@@ -366,7 +359,7 @@ body,legend,article,#q,#d,#g h2,#e.n {
 #e:hover,.e {
     background:#DDD;
 }
-#s,article,blockquote,blockquote div,blockquote p,.c,#i,h3,aside {
+.wc,#d,#s,article,blockquote,blockquote div,blockquote p,.c,#i,h3,aside {
     overflow:hidden;
 }
 a,#w .s {

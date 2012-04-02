@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <title>Search Posts - ウォール検索</title>
-<link rel="stylesheet" href="w.css" />
+<link rel="stylesheet" href="wall.css" />
 <?php if($_GET['tab']=='1'){ ?>
 <link rel="stylesheet" href="t.css" />
 <?php }else if($_GET['mb']=='1'){?>
@@ -79,7 +79,7 @@
         <li id="f">FQL Teacher :@<a href="http://www.facebook.com/pinmarch.t" target="_blank">Satoshi Tada</a></li>
     </ul>
     <?php }else{?>
-    <a href="#t">&gt;&gt; Page Top</a>
+    <a href="#t" id="pt">&gt;&gt; Page Top</a>
     <?php }?>
 </footer>
 <div id="fb-root"></div>
@@ -90,6 +90,7 @@
         R='<?=$_GET['r']?>',
         NO=<?php if($_GET['no']){echo 'true';}else{echo 'false';} ?>;
 </script>
-<script src="w.js"></script>
+<script src="jquery.mix.js"></script>
+<script src="wall.js"></script>
 </body>
 </html>

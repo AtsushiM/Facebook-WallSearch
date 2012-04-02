@@ -18,12 +18,9 @@ var WS = (function(win, doc) {
             xfbml: true
         });
         var s = gd('s');
-        s.className = 'o';
-        s = s.style
-        setTimeout(function() {
-            s.overflow = 'visible';
-            s.height = 'auto';
-        }, 300);
+        open(s, function() {
+            s.style.overflow = 'visible';
+        });
         if (Q) {
             sInit();
         }
@@ -96,7 +93,7 @@ var WS = (function(win, doc) {
         $C = gd('o'),
         $Q = gd('q'),
         $B = gd('b'),
-        $CF = $('#d'),
+        $CF = gd('d'),
         $RM = gd('rm'),
         $RF = gd('rf'),
         $RA = gd('ra'),
@@ -183,11 +180,11 @@ var WS = (function(win, doc) {
             all: 'in(SELECT target_id FROM connection WHERE source_id=me())'
         },
         fqli,
-        cS = 'fast',
         d1 = 86400000,
         JF = true,
         J = JSON,
-        LS = win.localStorage;
+        LS = win.localStorage,
+        CT = false;
 
     if (LA !== 'ja_JP') {
         peL = 'View post';
@@ -276,22 +273,33 @@ var WS = (function(win, doc) {
         pT[10] = '</div></div></div></li>';
     }
 
-    $('#y').button()[0].onclick = function() {
-        sInit();
-        return false;
-    };
-    $('#r').buttonset().find('input').click(function() {
-        sInit();
-    });
+    $('#r').buttonset();
+    $('#y').button()[0].onclick =
+        $RM.onclick =
+        $RF.onclick =
+        $RA.onclick =
+        $RS.onclick = sInit;
+
     gd('v').onclick = function() {
-        $CF.slideToggle(cS);
+        if (CT === false) {
+            CT = true;
+            open($CF);
+        }
+        else {
+            CT = false;
+            close($CF);
+        }
     };
 
-    $('a[href^=#]').click(function() {
-        location.hash = $(this).attr('href');
-        location.hash = '';
-        return false;
-    });
+    (function(p) {
+        if (p) {
+            p.onclick = function() {
+                location.hash = p.href;
+                location.hash = '';
+                return false;
+            };
+        }
+    }(gd('pt')));
 
 function sInit() {
     var w = $Q.value,
@@ -404,6 +412,7 @@ function sInit() {
         stars = stars ? J.parse(stars) : {};
         sStar(stars, c, Math.floor(now / 1000));
     }
+    return false;
 }
 function _s(res, conf) {
     if (now === conf.qid) {
@@ -597,10 +606,10 @@ function _s(res, conf) {
             groupID = conf.range + hC;
             var insdom = doc.createElement('div');
             insdom.id = groupID;
-            insdom.style.display = 'none';
+            insdom.className = 'wc';
             insdom.innerHTML = html;
             $W.insertBefore(insdom, $W.lastChild);
-            $('#' + groupID).slideDown(cS);
+            open(gd(groupID));
         }
         $C.innerHTML = hC + '/' + tC;
         conf.sc = hC;
@@ -789,6 +798,37 @@ function gChecked(el) {
 }
 function gd(id) {
     return doc.getElementById(id);
+}
+
+function open(id, after) {
+    id.style.height = 'auto';
+    var h = id.scrollHeight;
+    id.style.height = '0';
+    anime(id, 'height', h, 0, after);
+}
+function close(id, after) {
+    anime(id, 'height', -id.scrollHeight, id.scrollHeight, after);
+}
+function anime(el, style, dis, from, after) {
+    var s = new Date() * 1,
+        e = el.style,
+        dur = 70,
+        i = setInterval(function() {
+            var t = new Date() - s,
+                c = dis * t / dur + from;
+
+            if (t > dur) {
+                clearInterval(i);
+                c = from + dis;
+
+                if (after) {
+                    setTimeout(function() {
+                        after();
+                    }, 10);
+                }
+            }
+            e[style] = c + 'px';
+        }, 10);
 }
 
 return ret;
