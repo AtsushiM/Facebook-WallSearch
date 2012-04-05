@@ -57,14 +57,43 @@
                 </fieldset>
             </div>
         </div>
-        <nav id="r" class="t">
+        <!-- <nav id="r" class="t"> -->
+        <!--     <ul class="c"> -->
+        <!--         <li><input type="radio" name="r" id="rm" value="me" checked="checked" /><label for="rm"><?=$rame?></label></li> -->
+        <!--         <li><input type="radio" name="r" id="rf" value="friends" /><label for="rf"><?=$rafr?></label></li> -->
+        <!--         <li><input type="radio" name="r" id="ra" value="all" /><label for="ra"><?=$raall?></label></li> -->
+        <!--         <li><input type="radio" name="r" id="rs" value="star" /><label for="rs">★</label></li> -->
+        <!--     </ul> -->
+        <!--     <p class="p"><?=$tipRange?></p> -->
+        <!-- </nav> -->
+        <nav id="r" class="t ui-buttonset">
             <ul class="c">
-                <li><input type="radio" name="r" id="rm" value="me" checked="checked" /><label for="rm"><?=$rame?></label></li>
-                <li><input type="radio" name="r" id="rf" value="friends" /><label for="rf"><?=$rafr?></label></li>
-                <li><input type="radio" name="r" id="ra" value="all" /><label for="ra"><?=$raall?></label></li>
-                <li><input type="radio" name="r" id="rs" value="star" /><label for="rs">★</label></li>
+                <li>
+                    <input type="radio" name="r" id="rm" value="me" checked="checked" class="ui-helper-hidden-accessible">
+                    <label for="rm" aria-pressed="false" class="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left" role="button">
+                        <span class="ui-button-text">自分のウォール</span>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" name="r" id="rf" value="friends" class="ui-helper-hidden-accessible">
+                    <label for="rf" aria-pressed="false" class="ui-button ui-widget ui-state-default ui-button-text-only" role="button">
+                        <span class="ui-button-text">友達のウォール</span>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" name="r" id="ra" value="all" class="ui-helper-hidden-accessible">
+                    <label for="ra" class="ui-state-active ui-button ui-widget ui-state-default ui-button-text-only" aria-pressed="true" role="button">
+                        <span class="ui-button-text">自分＋友達のウォール</span>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" name="r" id="rs" value="star" class="ui-helper-hidden-accessible">
+                    <label for="rs" aria-pressed="false" class="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-right" role="button">
+                        <span class="ui-button-text">★</span>
+                    </label>
+                </li>
             </ul>
-            <p class="p"><?=$tipRange?></p>
+            <p class="p">検索するウォールを選択してください。</p>
         </nav>
     </form>
 </header>
