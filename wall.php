@@ -59,12 +59,12 @@
         </div>
         <nav id="r" class="t">
             <ul class="c">
-                <li><input type="radio" name="r" id="rm" value="me" checked="checked"><label for="rm" id="lm">自分のウォール</label></li>
-                <li><input type="radio" name="r" id="rf" value="friends"><label for="rf" id="lf">友達のウォール</label></li>
-                <li><input type="radio" name="r" id="ra" value="all"><label for="ra" id="la">自分＋友達のウォール</label></li>
+                <li><input type="radio" name="r" id="rm" value="me" checked="checked"><label for="rm" id="lm"><?=$rame?></label></li>
+                <li><input type="radio" name="r" id="rf" value="friends"><label for="rf" id="lf"><?=$rafr?></label></li>
+                <li><input type="radio" name="r" id="ra" value="all"><label for="ra" id="la"><?=$raall?></label></li>
                 <li><input type="radio" name="r" id="rs" value="star"><label for="rs" id="ls">★</label></li>
             </ul>
-            <p class="p">検索するウォールを選択してください。</p>
+            <p class="p"><?=$tipRange?></p>
         </nav>
     </form>
 </header>
