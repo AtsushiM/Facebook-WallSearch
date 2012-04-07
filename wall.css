@@ -118,7 +118,7 @@ h1 {
     -o-border-top-right-radius: 3px;
     border-top-right-radius: 3px;
 }
-#r li .t {
+#r li .v {
     background: none;
 }
 
@@ -136,8 +136,12 @@ h1 {
     top:-17px;
 }
 #b {
+    width:60px;
     padding-right:20px;
     background:right center no-repeat;
+}
+#b .a {
+    width:30px;
 }
 #o {
     margin-top:3px;
@@ -254,7 +258,7 @@ article {
 article,
 #r label:hover,
 #y:hover,
-#r li .t {
+#r li .v {
     color: #222;
 }
 #w div div {

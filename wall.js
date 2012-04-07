@@ -247,7 +247,7 @@ var WS = (function(win, doc) {
                     break;
             }
         }
-        $NL.className = 't';
+        $NL.className = 'v';
 
         if (p && p !== '') {
             $PN.selected = false;
@@ -289,7 +289,7 @@ var WS = (function(win, doc) {
         sInit();
         $NL.className = '';
         $NL = l;
-        $NL.className = 't';
+        $NL.className = 'v';
     };
 
     $RM.onclick =
