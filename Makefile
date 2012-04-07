@@ -1,7 +1,7 @@
 SRC = wall.js
 TEMP = w.temp.js
 COMPRESS = w.min.js
-SRCS = jquery.mix.js w.min.js
+SRCS = w.min.js
 COMBINE = w.js
  
 $(TEMP) : $(SRC)

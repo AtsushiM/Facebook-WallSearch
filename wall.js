@@ -98,6 +98,11 @@ var WS = (function(win, doc) {
         $RF = gd('rf'),
         $RA = gd('ra'),
         $RS = gd('rs'),
+        $LM = gd('lm'),
+        $LF = gd('lf'),
+        $LA = gd('la'),
+        $LS = gd('ls'),
+        $NL = $LM,
         $PN = gd('pn'),
         $PH = gd('ph'),
         $PW = gd('pw'),
@@ -230,15 +235,20 @@ var WS = (function(win, doc) {
             switch (r) {
                 case 'friends':
                     $RF.checked = true;
+                    $NL = $LF;
                     break;
                 case 'all':
                     $RA.checked = true;
+                    $NL = $LA;
                     break;
                 default:
                     $RS.checked = true;
+                    $NL = $LS;
                     break;
             }
         }
+        $NL.className = 't';
+
         if (p && p !== '') {
             $PN.selected = false;
 
@@ -273,12 +283,22 @@ var WS = (function(win, doc) {
         pT[10] = '</div></div></div></li>';
     }
 
-    $('#r').buttonset();
-    $('#y').button()[0].onclick =
-        $RM.onclick =
-        $RF.onclick =
-        $RA.onclick =
-        $RS.onclick = sInit;
+    gd('y').onclick = sInit;
+
+    $RM.t = $LM;
+    $RF.t = $LF;
+    $RA.t = $LA;
+    $RS.t = $LS;
+
+    $RM.onclick =
+    $RF.onclick =
+    $RA.onclick =
+    $RS.onclick = function() {
+        sInit();
+        $NL.className = '';
+        $NL = this.t;
+        $NL.className = 't';
+    };
 
     gd('v').onclick = function() {
         if (CT === false) {
