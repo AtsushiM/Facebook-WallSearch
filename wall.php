@@ -19,10 +19,12 @@
     <?php if($_GET['mb']!='1'){?><iframe id="l" src="http://www.facebook.com/plugins/like.php?app_id=230251640320544&locale=en_US&href=http%3A%2F%2Fwww.facebook.com%2Fapps%2Fapplication.php%3Fid%3D168589393194273&send=false&layout=button_count&width=120&show_faces=true&action=like&colorscheme=light&font&height=21" scrolling="no" frameborder="0" style="border:none;overflow:hidden;width:120px;height:21px" allowTransparency="true"></iframe><?php }?>
     <div class="l c">
         <p>Hello <a href="<?=$me['profile_url']?>" target="_blank"><?=$me['name']?></a>.</p>
-        <?php if($_GET['mb']!='1'){?><ul class="c">
+        <?php if($_GET['mb']!='1'){?>
+        <ul class="c">
             <li><a href="https://github.com/AtsushiM/Facebook-WallSearch" target="_blank">github</a></li>
             <li><a href="https://www.facebook.com/pages/Search-Posts-%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E6%A4%9C%E7%B4%A2-Community/341257545897974" target="_blank">about</a></li>
-        </ul><?php }?>
+        </ul>
+        <?php }?>
     </div>
     <form id="s" action=".">
         <div id="i">
@@ -33,7 +35,6 @@
         <div id="g">
             <h2 id="v">+ <?=$optLabel?></h2>
             <div id="d">
-                <?php if($_GET['mb']!='1'){?>
                 <fieldset>
                     <legend><?=$periodLabel?></legend>
                     <select name="p" id="p">
@@ -43,16 +44,13 @@
                         <option id="pm" value="m"><?=$pemonth?></option>
                     </select>
                 </fieldset>
-                <?php }?>
                 <fieldset>
                     <legend><?=$otherLabel?></legend>
                     <ul>
                         <li><input type="checkbox" name="ao" id="ao" value="1" /><label for="ao"><?=$atonly?></label></li>
                         <li><input type="checkbox" name="lo" id="lo" value="1" /><label for="lo"><?=$lionly?></label></li>
                         <li><input type="checkbox" name="os" id="os" value="1" /><label for="os"><?=$strict?></label></li>
-                        <?php if($_GET['mb']!='1'){?>
                         <li><input type="checkbox" name="ns" id="ns" value="1" /><label for="ns"><?=$nonstop?></label></li>
-                        <?php }?>
                     </ul>
                 </fieldset>
             </div>

@@ -285,19 +285,28 @@ var WS = (function(win, doc) {
 
     gd('y').onclick = sInit;
 
-    $RM.t = $LM;
-    $RF.t = $LF;
-    $RA.t = $LA;
-    $RS.t = $LS;
-
-    $RM.onclick =
-    $RF.onclick =
-    $RA.onclick =
-    $RS.onclick = function() {
+    var ract = function(l) {
         sInit();
         $NL.className = '';
-        $NL = this.t;
+        $NL = l;
         $NL.className = 't';
+    };
+
+    $RM.onclick =
+    $LM.onclick = function() {
+        ract($LM);
+    };
+    $RF.onclick =
+    $LF.onclick = function() {
+        ract($LF);
+    };
+    $RA.onclick =
+    $LA.onclick = function() {
+        ract($LA);
+    };
+    $RS.onclick =
+    $LS.onclick = function() {
+        ract($LS);
     };
 
     gd('v').onclick = function() {

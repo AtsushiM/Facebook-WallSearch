@@ -1,0 +1,25 @@
+@charset "utf-8";
+header{
+    margin-top:0;
+}
+#g {
+    display: none;
+}
+#q {
+    width: 150px;
+}
+.p {
+    display: none !important;
+}
+footer{
+  position:fixed;
+  left:0;
+  bottom:0;
+  width:100%;
+  background:#FFF;
+  font-size:16px;
+}
+footer a {
+  display:block;
+  padding:10px;
+}

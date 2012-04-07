@@ -1,6 +1,7 @@
 " Vake!
 HTMLMinifier -input=wall.php -output=index.php
 CSSMinifier -input=wall.css -output=w.css
+CSSMinifier -input=mobile.css -output=m.css
 
 " growlnotify 
 call system("growlnotify -t 'Vake' -m 'Vake complete.'")
