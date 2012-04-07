@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <title>Search Posts - ウォール検索</title>
 <link rel="stylesheet" href="w.css" />
-<?php if($_GET['tab']=='1'){ ?>
+<?php if($_GET['tab']=='1'){?>
 <link rel="stylesheet" href="t.css" />
 <?php }else if($_GET['mb']=='1'){?>
 <link rel="stylesheet" href="m.css" />
