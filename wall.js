@@ -643,12 +643,16 @@ function _s(res, conf) {
         if (html) {
             hC += h;
             groupID = conf.range + hC;
-            var insdom = doc.createElement('div');
+            var insdom = doc.createElement('div'),
+                ao;
             insdom.id = groupID;
             insdom.className = 'wc';
             insdom.innerHTML = html;
             $W.insertBefore(insdom, $W.lastChild);
-            open(gd(groupID));
+            ao = gd(groupID);
+            open(ao, function() {
+                ao.style.height = 'auto';
+            });
         }
         $C.innerHTML = hC + '/' + tC;
         conf.sc = hC;

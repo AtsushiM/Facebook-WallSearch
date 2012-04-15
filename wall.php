@@ -88,6 +88,6 @@
         R='<?=$_GET['r']?>',
         NO=<?php if($_GET['no']){echo 'true';}else{echo 'false';} ?>;
 </script>
-<script src="w.js?update=20120415"></script>
+<script src="w.js"></script>
 </body>
 </html>
