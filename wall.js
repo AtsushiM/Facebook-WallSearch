@@ -283,30 +283,40 @@ var WS = (function(win, doc) {
         pT[10] = '</div></div></div></li>';
     }
 
-    gd('y').onclick = sInit;
-
-    var ract = function(l) {
+    gd('y').onclick = function() {
         sInit();
-        $NL.className = '';
-        $NL = l;
-        $NL.className = 'v';
-    };
+        return false;
+    }
+
+    var ract = function(l, r) {
+            $RM.checked =
+            $RF.checked =
+            $RA.checked =
+            $RS.checked = false;
+            r.checked = true;
+
+            sInit();
+            $NL.className = '';
+            $NL = l;
+            $NL.className = 'v';
+            return false;
+        };
 
     $RM.onclick =
     $LM.onclick = function() {
-        ract($LM);
+        return ract($LM, $RM);
     };
     $RF.onclick =
     $LF.onclick = function() {
-        ract($LF);
+        return ract($LF, $RF);
     };
     $RA.onclick =
     $LA.onclick = function() {
-        ract($LA);
+        return ract($LA, $RA);
     };
     $RS.onclick =
     $LS.onclick = function() {
-        ract($LS);
+        return ract($LS, $RS);
     };
 
     gd('v').onclick = function() {

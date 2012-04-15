@@ -1,13 +1,13 @@
 <?php require_once('lib/auth.php');?><!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
+<meta charset="utf-8">
 <title>Search Posts - ウォール検索</title>
-<link rel="stylesheet" href="w.css" />
+<link rel="stylesheet" href="w.css">
 <?php if($_GET['tab']=='1'){?>
-<link rel="stylesheet" href="t.css" />
+<link rel="stylesheet" href="t.css">
 <?php }else if($_GET['mb']=='1'){?>
-<link rel="stylesheet" href="m.css" />
+<link rel="stylesheet" href="m.css">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
 <?php }else{?>
 <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -88,6 +88,6 @@
         R='<?=$_GET['r']?>',
         NO=<?php if($_GET['no']){echo 'true';}else{echo 'false';} ?>;
 </script>
-<script src="w.js"></script>
+<script src="w.js?update=20120415"></script>
 </body>
 </html>

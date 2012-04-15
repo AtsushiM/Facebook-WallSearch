@@ -7,7 +7,8 @@ COMBINE = w.js
 $(TEMP) : $(SRC)
 	cat $^ > $@
 
-	java -jar /Applications/gcc/compiler.jar --js $(TEMP) --js_output_file $(COMPRESS)
+	growlnotify -t 'auto-make' -m 'make start.'
+	((java -jar /Applications/gcc/compiler.jar --js $(TEMP) --js_output_file $(COMPRESS)) && growlnotify -t 'auto-make' -m 'make complete.') || growlnotify -t 'auto-make' -m 'make error.'
 	rm -f $(TEMP)
 	cat $(SRCS) > $(COMBINE)
 	rm -f $(COMPRESS)
